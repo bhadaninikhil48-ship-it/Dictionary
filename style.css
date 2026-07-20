@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   
+
+}
+
+body{
+      background: linear-gradient(
+        135deg,
+        #3a3839,
+        #ac25c7d2,
+        #b834b8a7
+    );
+
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+main{
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-box{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+#input-box{
+    font-size: 16px;
+    width: 45vw;
+    padding:16px 20px;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 20px;
+}
+
+.search-box button{
+    margin-left: 10px;
+    height: 48px;
+    width: 80px;
+    border: none;
+    border-radius: 12px;
+}
+
+.result{
+    width:min(800px,90%);
+    height: 100%;
+    background: rgba(255,255,255,.08);
+
+    backdrop-filter: blur(10px);
+
+    border:1px solid rgba(255, 255, 255, 0.62);
+    color:rgb(243, 236, 236);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.word-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.audio-btn{
+    height:55px;
+    width:55px;
+    border-radius: 100%;
+}
+
+.audio-btn:hover{
+    transform:scale(1.1);
+}
+
+.meaning-section,
+.example-section,
+.synonyms-section,
+.antonyms-section{
+    padding: 20px 0;
+}
+
+.word-info,
+.meaning-section,
+.example-section,
+.synonyms-section,
+.antonyms-section{
+    border-bottom: 2px solid #ddd;
+}
