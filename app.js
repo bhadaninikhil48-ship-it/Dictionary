@@ -4,6 +4,8 @@ let wordElement = document.querySelector(".word")
 let pronunciation = document.querySelector(".pronunciation")
 let partOfSpeech = document.querySelector(".part-of-speech")
 let definition = document.querySelector(".definition")
+let tags = document.querySelector(".tags")
+
 
 searchBtn.addEventListener("click",async function(){
    let data = await getWord()
@@ -11,10 +13,10 @@ searchBtn.addEventListener("click",async function(){
     
 })
 
-input.addEventListener("keydown", function(event){
+input.addEventListener("keydown", async function(event){
    if(event.code=="Enter"){
     
-     searchWord()
+     await searchWord()
    
    }
     
@@ -30,7 +32,7 @@ async function searchWord(){
     }
 
     let data = await getWord(word)
-    console.log(data)
+    // console.log(data)
 
     wordElement.innerHTML = data[0].word
     pronunciation.innerHTML = data[0].phonetics[1].text
@@ -38,6 +40,18 @@ async function searchWord(){
     let random = Math.floor(Math.random()*data[0].meanings[0].definitions.length)
     definition.innerHTML = data[0].meanings[0].definitions[random].definition
 
+    tags.innerHTML = ""
+    let synonyms = data[0].meanings[0].synonyms;
+    for(let synonym of synonyms){
+        if(synonyms.length===0){
+            tags.innerHTML="<span> No synonyms found </span>"
+        }else{
+            let span = document.createElement("span")
+            span.textContent=synonym
+            tags.appendChild(span)
+            
+        }
+    }
     
      input.value=""
 

@@ -91,8 +91,35 @@ main{
 
 .word-info,
 .meaning-section,
-.example-section,
-.synonyms-section,
-.antonyms-section{
+.example-section
+{
     border-bottom: 2px solid #ddd;
+}
+
+.tags{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tags span{
+    padding: 6px 12px;
+    background: #171f117b;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+
+
+
+
+.part-of-speech
+{
+    padding: 4px 10px;
+    margin: 5px 0;
+    background: #171f117b;
+    color: white;
+    border-radius: 20px;
+  
 }
