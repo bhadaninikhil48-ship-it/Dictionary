@@ -38,7 +38,7 @@ async function searchWord(){
     }
 
     let data = await getWord(word)
-    console.log(data)
+    // console.log(data)
 
     wordElement.innerHTML = data[0].word
   for (let phonetic of data[0].phonetics) {
