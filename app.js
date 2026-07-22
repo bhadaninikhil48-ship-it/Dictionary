@@ -5,11 +5,17 @@ let pronunciation = document.querySelector(".pronunciation")
 let partOfSpeech = document.querySelector(".part-of-speech")
 let definition = document.querySelector(".definition")
 let tags = document.querySelector(".tags")
+let audioBtn = document.querySelector(".audio-btn")
+
+let currentAudioURL = "";
+
+
 
 
 searchBtn.addEventListener("click",async function(){
    let data = await getWord()
     await searchWord(data)
+    
     
 })
 
@@ -32,10 +38,15 @@ async function searchWord(){
     }
 
     let data = await getWord(word)
-    // console.log(data)
+    console.log(data)
 
     wordElement.innerHTML = data[0].word
-    pronunciation.innerHTML = data[0].phonetics[1].text
+  for (let phonetic of data[0].phonetics) {
+    if (phonetic.text) {
+        pronunciation.innerHTML = phonetic.text;
+        break;
+    }
+}
     partOfSpeech.innerHTML = data[0].meanings[0].partOfSpeech
     let random = Math.floor(Math.random()*data[0].meanings[0].definitions.length)
     definition.innerHTML = data[0].meanings[0].definitions[random].definition
@@ -52,6 +63,18 @@ async function searchWord(){
             
         }
     }
+
+    for (let phonetic of data[0].phonetics) {
+
+    if (phonetic.audio !== "") {
+
+        currentAudioURL = phonetic.audio;
+
+        break;
+
+    }
+
+}
     
      input.value=""
 
@@ -66,9 +89,24 @@ async function getWord(word){
     try{
         let res = await fetch(url)
         let data = await res.json()
+
         return data
 
     }catch(err){
         console.log("Error - ",err)
     }
 }
+
+
+
+audioBtn.addEventListener("click", function () {
+
+    if (currentAudioURL !== "") {
+
+        let player = new Audio(currentAudioURL);
+
+        player.play();
+
+    }
+
+});
